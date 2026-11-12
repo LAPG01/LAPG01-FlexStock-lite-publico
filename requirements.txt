@@ -1,0 +1,18 @@
+# Dependencias de ejecución. Esto es lo único que necesita
+# la PC de la ferretería.
+reportlab>=4.0        # generacion de PDF, pip puro, sin binarios externos
+pillow>=10.0          # iconos y logo (ui/icons.py, reports/invoice_pdf.py). Ya la exige
+                      # reportlab, pero el codigo la importa directo: se declara aca.
+customtkinter==6.0.0  # interfaz moderna (esquinas redondeadas, modo oscuro) sobre el
+                      # mismo Tkinter; pip puro, sin binarios. Version FIJA: ui/kit.py
+                      # toca partes internas de CTk (_entry, _canvas) que pueden
+                      # cambiar entre versiones. Subirla = correr pytest antes.
+
+# Mismo archivo para Windows y Linux: todo es pip puro. Si algun dia hace falta
+# un paquete de una sola plataforma, va aca con marcador de entorno, por ejemplo:
+#   nombre-del-paquete>=1.0; sys_platform == "win32"
+# En vez de mantener dos archivos que se desfasan.
+#
+# Fuera de pip (Tkinter viene con Python, pero no siempre):
+#   Windows: instalador de python.org, con "tcl/tk and IDLE" marcado (por defecto).
+#   Arch:    sudo pacman -S tk

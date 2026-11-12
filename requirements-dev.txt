@@ -1,0 +1,4 @@
+# Herramientas de desarrollo. NO se instalan en la PC del cliente.
+-r requirements.txt
+pytest>=8.0
+ruff>=0.6

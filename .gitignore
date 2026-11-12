@@ -1,0 +1,40 @@
+# La base de datos NUNCA entra a Git: es binaria, no se puede diffear
+# y contiene datos reales de clientes.
+# Ancladas a la raiz (/) a proposito: sin la barra inicial, "data/"
+# tambien matchea flexstock/data/ (el codigo fuente de los
+# repositorios) y lo saca de Git sin que nadie lo note.
+*.db
+*.db-wal
+*.db-shm
+*.sqlite3
+/data/
+/backups/
+/exports/
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+# coverage.py guarda sus datos en un SQLite: sin esta regla, un
+# `git add -A` despues de correr pytest --cov mete una base a Git
+# (ya paso una vez y hubo que reescribir la rama para sacarla).
+.coverage
+.coverage.*
+htmlcov/
+dist/
+build/
+*.spec
+.vscode/
+.idea/
+source_data/
+.env
+.env.*
+!.env.example
+suppliers_to_review.csv
+
+# Archivos exportados (PDF/CSV) que caigan dentro del repo: son de
+# consulta y traen precios y datos reales del negocio.
+*.pdf
+*.csv
